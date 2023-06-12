@@ -8,7 +8,7 @@ import { useState } from 'react'
 const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   const { data: session } = useSession()
   const pathname = usePathname()
-  const router = useRouter
+  const router = useRouter()
   const [copied, setCopied] = useState()
 
   const handleCopy = () => {
@@ -32,13 +32,20 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
             width={40}
             height={40}
             className='rounded-full object-contain'
+            onClick={() => router.push(`/profile/${post.creator.id}`)}
           />
 
           <div className='flex flex-col'>
-            <h3 className='font-satoshi font-semibold text-gray-900'>
+            <h3
+              className='font-satoshi font-semibold text-gray-900'
+              onClick={() => router.push(`/profile/${post.creator.id}`)}
+            >
               {post.creator.username}
             </h3>
-            <p className='font-inter text-sm text-gray-500'>
+            <p
+              className='font-inter text-sm text-gray-500'
+              onClick={() => router.push(`/profile/${post.creator.id}`)}
+            >
               {post.creator.email}
             </p>
           </div>
